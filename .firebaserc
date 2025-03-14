@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "comprasegura-c5113": {
+      "hosting": {
+        "app": [
+          "comprasegura-c5113"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "comprasegura-c5113"
+  }
+}

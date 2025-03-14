@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Resultado de la Inspección</title>
+    <style>
+      .body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f6f6 !important;
+        padding: 20px;
+        margin: 0;
+      }
+      .center{
+        text-align:center;
+      }
+      .container {
+        max-width: 600px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto 10px auto;
+      }
+      h2, h1, h3{
+        color: #333;
+      }
+      h3 {
+        font-size: 18px;
+    text-align: center;
+      }
+      .info-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .info-table th, .info-table td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      .photo-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      .photo-table td {
+        text-align: center;
+        padding: 10px;
+        vertical-align: top;
+        width: 50%;
+      }
+      .photo-table img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+      }
+      .photo-title {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #555;
+      }
+      .detalles{
+        font-size: 12px;
+        color: #6f6f6f;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="body">
+    <h1 class="center">Resultado de la Inspección</h1>
+    <p class="center detalles">Id: {{id}} | uid: {{usuario}} | fecha: {{formatDate fechaInicio.seconds}}
+    <div class="container">
+      <h3>Decodificación del VIN</h3>
+      <table class="info-table">
+        <tr><th>VIN</th><td>{{visibles.vin}}</td></tr>
+        <tr><th>Fabricante</th><td>{{decodificacionVin.marca}}</td></tr>
+        <tr><th>Modelo</th><td>{{decodificacionVin.modelo}}</td></tr>
+        <tr><th>Año</th><td>{{decodificacionVin.anioModelo}}</td></tr>
+        <tr><th>País</th><td>{{decodificacionVin.pais}}</td></tr>
+      </table>
+    </div>
+    <div class="container">
+      <h3>Fotografias</h3>
+      <table class="photo-table">
+        {{#each fotos}}
+          {{#if (isEven @index)}}<tr>{{/if}}
+            <td>
+              <img src="{{this.imagen.url}}" alt="{{this.posicion}}">
+              <div class="photo-title">{{this.posicion}}</div>
+            </td>
+          {{#if (isOdd @index)}}</tr>{{/if}}
+        {{/each}}
+      </table>
+    </div>
+    <div class="container">
+      <h3>Ubicacion</h3>
+      <p class="center"><a href="{{googleMapsUrl}}" target="_blank">Ver en Google Maps</a></p>
+    </div>
+  </div>
+  </body>
+</html>

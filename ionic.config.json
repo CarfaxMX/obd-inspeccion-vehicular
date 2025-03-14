@@ -1,0 +1,7 @@
+{
+  "name": "Validacion Cruzada VIN",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,54 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>OBD2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <!-- Sección de instrucciones y botón para buscar dispositivos -->
+    <div *ngIf="instrucciones">
+      <ion-img
+        src="../../../assets/How-to-Connect-an-OBD-2-to-Your-Car.jpg"
+        alt="Conectar OBD2"
+      ></ion-img>
+      <p>
+        Inserta el dispositivo y presiona el botón de buscar. Una vez que
+        tengas la lista de dispositivos, selecciona el que desees conectar.
+      </p>
+      <div *ngIf="inicioble">
+        <ion-button expand="block" shape="round" (click)="startScan()">
+          Buscar Dispositivos
+        </ion-button>
+        <ion-loading trigger="buscar" message="Buscando Bluetooth..." [duration]="1500"></ion-loading>
+      </div>
+
+    </div>
+
+
+
+    <!-- Sección para listar dispositivos encontrados -->
+    <div *ngIf="devices && devices.length > 0">
+      <ion-list>
+        <ion-item *ngFor="let device of devices" button (click)="connect(device)">
+          <ion-label>
+            {{ device.name || device.id }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Mensaje de dispositivo conectado -->
+    <div *ngIf="connectedDevice">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Conexión Exitosa</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Conectado al dispositivo: {{ connectedDevice.name || connectedDevice.id }}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

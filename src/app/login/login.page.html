@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Incio de sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div id="container">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-input label="Email" fill="outline" type="text" [(ngModel)]="username"  name="username" required>
+          </ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-input label="Contraseña" fill="outline" type="password" [(ngModel)]="password"  name="password" required></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="login()">Iniciar sesión</ion-button>
+        <ion-button expand="block" (click)="loginGoogle()">Iniciar sesión con Google</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

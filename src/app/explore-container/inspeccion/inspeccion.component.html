@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Inspeccion 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" >
+  <div id="container">
+    <div>
+      <h1 class="ion-margin ion-text-center">Proceso de inspeccion </h1>
+      <p class="ion-margin ion-text-center " style="color: #8c8c8c;">{{validacionId}}  |  {{ fechaInicialInspeccion }}</p>
+    </div>
+    <div class="cuerpo formulario">
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+            <ion-card >
+              <ion-card-header>
+                <ion-card-title class="ion-text-center">
+                  <p>Captura de datos mediante el protocolo OBD II</p> 
+                  <ion-button shape="round" (click)="link('obd')">
+                    <ion-icon *ngIf="obdConluido" name="checkmark"></ion-icon>
+                    <p  *ngIf="!obdConluido" >OBD II</p>                   
+                  </ion-button>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button  style="margin-top: 30px;" expand="block" shape="round" (click)="link('resultado')">
+              Ver resultado 
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+
+  </div>
+</ion-content>
+

@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Resultado 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" >
+  <div id="container">
+    <!-- <div class="cuerpo formulario">
+      <ion-loading class="custom-loading" trigger="open-loading" message="Comparando los resultados" [duration]="3000"></ion-loading>
+    </div> -->
+
+    <div class="cuerpo" >
+      <div>
+        <h1 class="ion-margin ion-text-center">Resultado de la inspección </h1>
+        <p class="ion-margin ion-text-center " style="color: #8c8c8c;">{{validacionId}}  |  {{ fechaInicialInspeccion }}</p>
+      </div>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Decodificacion del VIN</ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <ion-label>
+            <div><b>Fabricante: </b><span>{{ validacionData.decodificacionVin.marca }}</span></div>
+            <div><b>Modelo: </b><span>{{ validacionData.decodificacionVin.modelo }}</span></div>
+            <div><b>Año: </b><span>{{ validacionData.decodificacionVin.anioModelo }}</span></div>
+            <div><b>País: </b><span>{{ validacionData.decodificacionVin.pais }}</span></div>
+            <div><b>VIN: </b><span>{{ validacionData.visibles.vin }}</span></div>
+          </ion-label>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Fotos ({{validacionData.fotos.length}})</ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <div class="consulta">
+            <p class="consulta_resultado">
+              <ion-grid>
+                <ion-row>
+                  <ion-col *ngFor="let foto of validacionData.fotos">
+                    <ion-card>
+                      <img alt="parabrisas" class="cardimage" src="{{ foto.imagen.url }}" />
+                      <ion-card-header>
+                        <ion-card-title>
+                          {{ foto.posicion }}
+                        </ion-card-title>
+                      </ion-card-header>
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </p>
+          </div>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Lectura de OBD </ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <div class="consulta">
+            <p class="consulta_resultado">
+              <!-- Aqui van los resultados de la lectura del obd: VIN, Emisiones, Seguridad ( bolsas de aire, frenos, daños ), sensores relacionados con el checkengine -->
+            </p>
+          </div>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Verificacion INE</ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <div class="consulta">
+            <p class="consulta_resultado">
+              <ion-label class="m-5"></ion-label>
+            </p>
+          </div>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Consulta de historial vehicular</ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <div class="consulta">
+            <p class="consulta_resultado">
+              <ion-label class="m-5"></ion-label>
+            </p>
+          </div>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Ubicación</ion-label>
+        </ion-item-divider>
+        <ion-item >
+          <div class="consulta">
+            <p class="consulta_resultado">
+              <!-- Aqui se debe presentar el mapa con la ubicacion donde se realizo la inspeccion -->
+
+            </p>
+          </div>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-button style="margin-top: 30px;" expand="block" shape="round" (click)="linkCapturaHome()" >Regresar</ion-button>
+      <ion-button style="margin-top: 30px;" expand="block" shape="round" (click)="enviarEmail()" >Enviar correo</ion-button>
+    </div>
+
+
+  </div>
+
+</ion-content>
